@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'bitter-rose';
+    font-weight: 400;
+    src: local('bitter-rose'), url(../public/fonts/bitter_rose/bitter_rose.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Chillax';
+    font-weight: 700;
+    src: local('Chillax'), url(../public/fonts/chillax/Chillax-Bold.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Chillax';
+    font-weight: 600;
+    src: local('Chillax'), url(../public/fonts/chillax/Chillax-Semibold.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Chillax';
+    font-weight: 500;
+    src: local('Chillax'), url(../public/fonts/chillax/Chillax-Medium.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Chillax';
+    font-weight: 400;
+    src: local('Chillax'), url(../public/fonts/chillax/Chillax-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Chillax';
+    font-weight: 350;
+    src: local('Chillax'), url(../public/fonts/chillax/Chillax-Light.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Chillax';
+    font-weight: 300;
+    src: local('Chillax'), url(../public/fonts/chillax/Chillax-Extralight.otf) format('opentype');
+}
+
+* {
+    font-family: 'Chillax';
+    scroll-behavior: smooth;
+}
