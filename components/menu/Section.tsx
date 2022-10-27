@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import DishCard from "../globals/atoms/DishCard";
 
 type Props = {
   type: {
@@ -32,14 +33,16 @@ const Section = ({ type }: Props) => {
 
   const animations = {
     initial: {
-      opacity: 0
+      opacity: 0,
+      translateY: -24,
     },
     animate: {
       opacity: isInView ? 1 : 0,
+      translateY: isInView ? 0 : -24,
     },
     transition: {
-        duration: 1
-    }
+      duration: 1,
+    },
   };
 
   return (
@@ -65,28 +68,7 @@ const Section = ({ type }: Props) => {
                 <span className="capitalize">{type.name}</span> of the day
               </p>
             )}
-            <div className="flex gap-x-6">
-              <Image
-                src={option.image}
-                alt={option.name}
-                width={90}
-                height={72}
-                objectFit="cover"
-              />
-              <div className="space-y-1">
-                <div className="flex gap-x-4 items-center">
-                  <p className="text-xl">{option.name}</p>
-                  {option.special && <Image
-                    src="/leaf.svg"
-                    width={16}
-                    height={16}
-                    objectFit="cover"
-                    alt="leaf"
-                  />}
-                </div>
-                <p className="opacity-60">{option.description}</p>
-              </div>
-            </div>
+            <DishCard dish={option} />
             <div className="text-xl flex gap-x-2">
               <p className={option.discount ? "line-through opacity-60" : ""}>
                 {formatCurrency(option.price)}

@@ -46,5 +46,8 @@
 
 * {
     font-family: 'Chillax';
-    scroll-behavior: smooth;
 }
+
+html {
+    scroll-behavior: smooth;
+  }

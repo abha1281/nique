@@ -79,7 +79,7 @@ const Footer = (props: Props) => {
         <CustomLink link="/" className="text-[32px] leading-7">nique.</CustomLink>
         <p className="opacity-60 text-sm">By Pawel Gola Powered by Webflow</p>
       </div>
-      {footerLinks.map(footer => (
+      {footerLinks.map((footer, index) => (
         <div key={footer.name} className="space-y-8">
           <h4 className="text-lg">{footer.name}</h4>
           <div className="flex flex-col gap-y-4">
@@ -87,7 +87,7 @@ const Footer = (props: Props) => {
               <CustomLink
                 className="w-max opacity-60 hover:opacity-80 transition-opacity"
                 link={link.link}
-                key={`link-${link}`}
+                key={`link-${link.link}-${index}`}
               >
                 {link.name}
               </CustomLink>

@@ -15,25 +15,25 @@ const currentMenu = [
       {
         name: "Tomato Toast",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/tomato_toast.jpg",
         price: 29,
         discount: undefined,
         special: true,
         recommended: false,
       },
       {
-        name: "Tomato Toast",
+        name: "Noodle Soup",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/noodle_soup.jpg",
         price: 5,
         discount: 8,
         special: false,
         recommended: false,
       },
       {
-        name: "Tomato Toast",
+        name: "Pumpkin Soup",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         price: 5,
         discount: undefined,
         special: false,
@@ -47,7 +47,7 @@ const currentMenu = [
       {
         name: "Delicious Pancakes",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/delicious_pancakes.jpg",
         price: 8,
         discount: 5,
         special: true,
@@ -56,7 +56,7 @@ const currentMenu = [
       {
         name: "Sweet Heaven",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/sweet_heaven.jpg",
         price: 5,
         discount: undefined,
         special: false,
@@ -65,14 +65,14 @@ const currentMenu = [
       {
         name: "Oatmeal Spirit",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/oatmeal_spirit.jpg",
         price: 5,
         discount: undefined,
         special: false,
         recommended: true,
       },
       {
-        image: "/menu.png",
+        image: "/dishes/avocado_smash.jpg",
         name: "Avocado Smash",
         price: 5,
         discount: undefined,
@@ -88,7 +88,7 @@ const currentMenu = [
       {
         name: "Delicious Pancakes",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         price: 8,
         discount: 5,
         special: true,
@@ -97,7 +97,7 @@ const currentMenu = [
       {
         name: "Sweet Heaven",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         price: 5,
         discount: undefined,
         special: false,
@@ -106,14 +106,14 @@ const currentMenu = [
       {
         name: "Oatmeal Spirit",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         price: 5,
         discount: undefined,
         special: false,
         recommended: true,
       },
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Avocado Smash",
         price: 5,
         discount: undefined,
@@ -129,7 +129,7 @@ const currentMenu = [
       {
         name: "Delicious Pancakes",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         price: 8,
         discount: 5,
         special: true,
@@ -138,7 +138,7 @@ const currentMenu = [
       {
         name: "Sweet Heaven",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         price: 5,
         discount: undefined,
         special: false,
@@ -147,14 +147,14 @@ const currentMenu = [
       {
         name: "Oatmeal Spirit",
         description: "Lorem ipsum dolor sit amet, consectetur",
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         price: 5,
         discount: undefined,
         special: false,
         recommended: true,
       },
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Avocado Smash",
         description: "Lorem ipsum dolor sit amet, consectetur",
         price: 5,
@@ -168,7 +168,7 @@ const currentMenu = [
     name: "wine",
     options: [
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Panthouse Tonic",
         special: true,
         price: 8,
@@ -177,7 +177,7 @@ const currentMenu = [
         description: "Lorem ipsum dolor sit amet, consectetur",
       },
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Apple Breeze",
         price: 5,
         discount: undefined,
@@ -186,7 +186,7 @@ const currentMenu = [
         description: "Lorem ipsum dolor sit amet, consectetur",
       },
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Frenchman Blitz",
         price: 5,
         discount: undefined,
@@ -200,7 +200,7 @@ const currentMenu = [
     name: "drinks",
     options: [
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Panthouse Tonic",
         special: true,
         price: 8,
@@ -209,7 +209,7 @@ const currentMenu = [
         description: "Lorem ipsum dolor sit amet, consectetur",
       },
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Apple Breeze",
         price: 5,
         discount: undefined,
@@ -218,7 +218,7 @@ const currentMenu = [
         description: "Lorem ipsum dolor sit amet, consectetur",
       },
       {
-        image: "/menu.png",
+        image: "/dishes/pumpkin_soup.jpg",
         name: "Frenchman Blitz",
         price: 5,
         discount: undefined,
@@ -232,7 +232,7 @@ const currentMenu = [
 
 const Menu = (props: Props) => {
   return (
-    <div className="w-full">
+    <div className="">
       <nav className="flex px-8 gap-x-12 w-full justify-evenly py-6 sticky top-0 bg-black/75 backdrop-blur-lg z-50">
         {options.map(option => (
           <CustomLink link={`#${option}`} key={option} className="capitalize">
@@ -241,16 +241,12 @@ const Menu = (props: Props) => {
         ))}
       </nav>
 
-      <motion.div
-        initial="hidden"
-        animate="show"
-        className="px-24 pt-20 pb-24 space-y-24"
-      >
+      <div className="px-24 pt-20 pb-24 space-y-24">
         {currentMenu.map((type, index) => (
           <Section type={type} key={`section-${index}`} />
         ))}
-      </motion.div>
-  </div>
+      </div>
+    </div>
   );
 };
 
