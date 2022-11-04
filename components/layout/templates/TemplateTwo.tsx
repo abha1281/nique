@@ -14,8 +14,7 @@ type Details = {
 
 type Props = {
   children: React.ReactNode;
-  details: Details;
-};
+ };
 
 const variants = {
   inactive: {
@@ -97,36 +96,56 @@ const workshops = {
   },
 };
 
-const TemplateTwo = ({ children, details }: Props) => {
+const lookup = {
+  menu: {
+    h2: "Check Out",
+    h1: "Our Menus",
+    background: "/menu.png",
+  },
+  reservation: {
+    h2: "Book a table",
+    h1: "Reservation",
+    background: "/reservation.png",
+  },
+  workshop: {
+    h2: "Shop",
+    h1: "Delicious Breakfast",
+    background: "/workshop.png",
+  },
+  blog: {
+    h2: "Blog",
+    h1: "Latest News",
+    background: "/blog.png",
+  },
+};
+
+const TemplateTwo = ({ children }: Props) => {
   const router = useRouter();
   const [hideFooter, setHideFooter] = useState(false);
-  const [templateDets, setTemplateDets] = useState(details);
+  const [templateDets, setTemplateDets] = useState<Details | null>(null);
+  let pageName = router.asPath.split("/")[1].split("#")[0].split("?")[0];
 
   useEffect(() => {
-    let pageName = router.asPath.split("/")[1].split("#")[0].split("?")[0];
     setHideFooter(pageName === "reservation");
 
-    pageName === "workshop" && router.query.class &&
+    pageName === "workshop" &&
+    router.query.class &&
     workshops[router.query.class as keyof typeof workshops]
       ? setTemplateDets(workshops[router.query.class as keyof typeof workshops])
-      : setTemplateDets(details);
+      : setTemplateDets(lookup[pageName as keyof typeof lookup]);
   }, [router]);
-
-  useEffect(() => {
-    console.log(templateDets);
-  }, [templateDets]);
 
   return (
     <div className="grid grid-cols-2 bg-black scroll-m-8">
-      <AnimatePresence mode='wait'>
-        <motion.section
-          variants={opacity}
-          key={router.asPath}
-          initial="in"
-          animate="inactive"
-          exit="out"
-          className="sticky top-0 h-screen overflow-hidden"
-        >
+      <motion.section
+        variants={opacity}
+        key={pageName}
+        initial="in"
+        animate="inactive"
+        exit="out"
+        className="sticky top-0 h-screen overflow-hidden"
+      >
+        {templateDets && (
           <div className="relative w-full h-screen">
             <Image
               alt="menu"
@@ -155,8 +174,10 @@ const TemplateTwo = ({ children, details }: Props) => {
               <Nav />
             </div>
           </div>
-        </motion.section>
-        <div className="bg-black text-white">
+        )}
+      </motion.section>
+      <div className="bg-black text-white">
+        <AnimatePresence mode="wait">
           <motion.main
             variants={variants}
             key={router.asPath}
@@ -167,8 +188,8 @@ const TemplateTwo = ({ children, details }: Props) => {
             {children}
           </motion.main>
           {!hideFooter && <Footer />}
-        </div>
-      </AnimatePresence>
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

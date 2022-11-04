@@ -1,4 +1,5 @@
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import CustomLink from "../globals/atoms/CustomLink";
 
 type Props = {};
@@ -73,10 +74,18 @@ const footerLinks = [
 ];
 
 const Footer = (props: Props) => {
+  const router = useRouter();
+  const [activePage, setActivePage] = useState("");
+  useEffect(() => {
+    let pageName = router.asPath.split("/")[1].split("#")[0].split("?")[0];
+    setActivePage(pageName);
+  }, [router]);
   return (
     <div className="px-24 pb-20 grid grid-cols-3 gap-20">
       <div className="space-y-8">
-        <CustomLink link="/" className="text-[32px] leading-7">nique.</CustomLink>
+        <CustomLink link="/" className="text-[32px] leading-7">
+          nique.
+        </CustomLink>
         <p className="opacity-60 text-sm">By Pawel Gola Powered by Webflow</p>
       </div>
       {footerLinks.map((footer, index) => (
@@ -85,7 +94,7 @@ const Footer = (props: Props) => {
           <div className="flex flex-col gap-y-4">
             {footer.links.map(link => (
               <CustomLink
-                className="w-max opacity-60 hover:opacity-80 transition-opacity"
+                className={`w-max opacity-60 hover:opacity-80 transition-all ${activePage === link.link ? "text-[#FACE8D] opacity-80" : ""}`}
                 link={link.link}
                 key={`link-${link.link}-${index}`}
               >

@@ -44,15 +44,15 @@ const Nav = ({}: Props) => {
   const animations = {
     initial: {
       opacity: 0,
-      top: `250%`,
+      bottom: `60%`,
     },
     animate: {
       opacity: 1,
-      top: `-250%`,
+      bottom: `120%`,
     },
     exit: {
       opacity: 0,
-      top: `250%`,
+      bottom: `60%`,
     },
     transition: {
       type: "spring",
@@ -91,7 +91,7 @@ const Nav = ({}: Props) => {
         {showOpenHours && (
           <motion.div
             {...animations}
-            className="px-6 py-4 rounded-xl text-black bg-white sm:w-[250px] space-y-2 absolute"
+            className="px-6 py-4 rounded-xl text-black bg-white sm:w-[250px] space-y-2 absolute h-max"
           >
             <p className="text-lg">Opening Hours</p>
             {openHours.map((hour, index) => (

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import CustomLink from "../components/globals/atoms/CustomLink";
-import { motion } from "framer-motion";
+import Option from "../components/menu/Option";
 import Section from "../components/menu/Section";
-import Footer from "../components/layout/Footer";
 
 type Props = {};
 
-const options = ["starter", "lunch", "dinner", "wine", "drinks"];
+const options = ["starter", "breakfast", "lunch", "dinner", "wine", "drinks"];
 
 const currentMenu = [
   {
@@ -233,13 +231,13 @@ const currentMenu = [
 const Menu = (props: Props) => {
   return (
     <div className="">
-      <nav className="flex px-8 gap-x-12 w-full justify-evenly py-6 sticky top-0 bg-black/75 backdrop-blur-lg z-50">
-        {options.map(option => (
-          <CustomLink link={`#${option}`} key={option} className="capitalize">
-            {option}
-          </CustomLink>
+      <nav className="px-[168px] sticky top-0 bg-black/75 backdrop-blur-lg z-50">
+      <div className="flex px-8  gap-x-12 w-full justify-evenly py-6  text-base">
+        {options.map((option, index) => (
+          <Option key={option} option={option} />
         ))}
-      </nav>
+      </div>
+    </nav>
 
       <div className="px-24 pt-20 pb-24 space-y-24">
         {currentMenu.map((type, index) => (

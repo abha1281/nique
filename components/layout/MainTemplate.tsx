@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import Meta from "./Meta";
 import TemplateOne from "./templates/TemplateOne";
 import TemplateTwo from "./templates/TemplateTwo";
@@ -44,17 +44,20 @@ const MainTemplate = ({ children }: Props) => {
   const [useTemp2, setUseTemp2] = useState(false);
   const [activePage, setActivePage] = useState("");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let pageName = router.asPath.split("/")[1].split("#")[0].split("?")[0];
-    let pageNames = Object.keys(lookup);
-
-    setActivePage(pageName);
-    if (pageNames.includes(pageName)) {
-      setUseTemp2(true);
-      return;
+    if (!pageName.includes("#")) {
+      let pageNames = Object.keys(lookup);
+      setActivePage(pageName);
+      if (pageNames.includes(pageName)) {
+        setUseTemp2(true);
+        return;
+      }
+      setUseTemp2(false);
     }
-    setUseTemp2(false);
   }, [router]);
+
+
   return (
     <>
       <Meta
@@ -65,7 +68,7 @@ const MainTemplate = ({ children }: Props) => {
         }
       />
       {useTemp2 ? (
-        <TemplateTwo details={lookup[activePage as keyof typeof lookup]}>
+        <TemplateTwo>
           {children}
         </TemplateTwo>
       ) : (
